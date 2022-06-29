@@ -1,0 +1,63 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Property Uploads</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">
+        <ion-icon name="close-outline" style="font-size: 28px"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="wrapper">
+    <section title="preview-section" class="previews" *ngIf="previews.length">
+      <div
+        *ngFor="let preview of previews; let i = index"
+        class="preview-img"
+        (click)="removeFile(i)"
+      >
+        <img [src]="preview" class="" alt="preview" />
+        <div class="cover-hover">
+          <p>Click to remove!</p>
+          <small>{{ selectedFiles[i].name }}</small>
+        </div>
+      </div>
+    </section>
+
+    <section title="upload-section" class="upload-form-container">
+      <div class="input-contianer" *ngIf="!previews.length">
+        <div>
+          <input
+            type="file"
+            name="imageUpload"
+            (change)="onSelectFile($event)"
+            id="imageUpload"
+            multiple
+          />
+          <p>Drag your files here or click in this area.</p>
+        </div>
+      </div>
+      <ion-button
+        color="primary"
+        expand="block"
+        class=""
+        id="uploadBtn"
+        (click)="upload()"
+      >
+        Upload Image
+      </ion-button>
+    </section>
+
+    <app-properties-current-images
+      [images]="property.images"
+      [id]="property.property_id"
+      *ngIf="property.images.length"
+    ></app-properties-current-images>
+  </div>
+</ion-content>
+
+<ion-footer translucent>
+  <ion-toolbar> </ion-toolbar>
+</ion-footer>

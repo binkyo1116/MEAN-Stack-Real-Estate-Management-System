@@ -1,0 +1,45 @@
+<ion-card>
+  <div class="tag" *ngIf="userService.user?.user_id === property.user_id">
+    Owned
+  </div>
+
+  <img
+    class="profile-image"
+    [src]="property?.images[0]"
+    *ngIf="property?.images?.length"
+  />
+  <img
+    class="profile-image"
+    [src]="'assets/images/madison.jpeg'"
+    *ngIf="!property?.images || !property?.images.length"
+  />
+
+  <ion-card-header>
+    <app-property-badge [type]="property?.type"></app-property-badge>
+    <ion-card-title class="name">
+      {{ property?.name }}
+    </ion-card-title>
+
+    <div>
+      {{ property?.createdAt | date }}
+    </div>
+  </ion-card-header>
+
+  <ion-card-content>
+    <div class="desc">
+      {{ property?.description }}
+    </div>
+
+    <div class="price">
+      {{ property?.price | currency: "PHP" }}
+    </div>
+    <ion-button
+      (click)="selectProperty(property)"
+      expand="block"
+      class="ion-margin-top"
+      color="primary"
+    >
+      View property
+    </ion-button>
+  </ion-card-content>
+</ion-card>
