@@ -5,8 +5,6 @@ physical property management. This can include residential,
 commercial, and land real estate. a software developed to
 connect property managers and potential buyers.
 
-both **frontend/** & **backend-fastify/** are work in progress.😕
-
 **[LIVE DEMO](https://real-estate-management.netlify.app/)**
 
 ![Screenshot](https://ik.imagekit.io/wr5lnrww0q8/REM_Folder/social_GKmc-8vHw.jpg?updatedAt=1631134174081)
