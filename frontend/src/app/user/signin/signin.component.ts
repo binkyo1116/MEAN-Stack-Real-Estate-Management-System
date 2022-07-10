@@ -30,6 +30,13 @@ export class SigninComponent implements OnInit {
   ngOnInit() {
   }
 
+  private async presentLoading() {
+    return await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Please wait...',
+    });
+  }
+
   public async submit() {
     if (this.signinForm.invalid) {
       this.error = true;
@@ -52,13 +59,6 @@ export class SigninComponent implements OnInit {
       await loading.dismiss();
       await this.showToast(errMssg, 'danger');
     }
-  }
-
-  private async presentLoading() {
-    return await this.loadingController.create({
-      cssClass: 'my-custom-class',
-      message: 'Please wait...',
-    });
   }
 
   private async showToast(message, color = 'success') {
